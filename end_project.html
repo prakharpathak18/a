@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prakhar Pathak - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* ===== GENERAL STYLING ===== */
+        :root {
+            --bg-dark: #14161a;
+            --bg-card: #1d1f24;
+            --accent: #5a9dfc;
+            --text-light: #f5f7fa;
+            --text-muted: #a8acb3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        section {
+            padding: 100px 8%;
+            position: relative;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 600;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(20, 22, 26, 0.9);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        nav a {
+            margin-left: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            position: relative;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        #home {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 120px;
+        }
+
+        .profile-pic-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--accent);
+            margin-bottom: 25px;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-name {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .hero-subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        /* ===== ABOUT ===== */
+        #about {
+            background: var(--bg-card);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 8px;
+        }
+
+        .divider {
+            width: 70px;
+            height: 4px;
+            background: var(--accent);
+            margin: 0 auto 50px;
+            border-radius: 5px;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .about-text {
+            flex: 2;
+            min-width: 280px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .about-text h3 {
+            color: var(--accent);
+            margin-top: 25px;
+            font-size: 1.3rem;
+        }
+
+        .interests {
+            flex: 1.2;
+            min-width: 250px;
+        }
+
+        .interests h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .interest-card {
+            background: var(--bg-dark);
+            padding: 18px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 0 0 transparent;
+            transition: all 0.3s ease;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .interest-card i {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .interest-card h4 {
+            margin-bottom: 5px;
+        }
+
+        .interest-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== PROJECTS ===== */
+        #projects {
+            background: var(--bg-dark);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: #111318;
+            padding: 6px 10px;
+            margin: 4px;
+            border-radius: 5px;
+            border: 1px solid var(--accent);
+            font-size: 0.85rem;
+        }
+
+        /* ===== CONTACT ===== */
+        #contact {
+            background: var(--bg-card);
+        }
+
+        .contact-intro {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .contact-item {
+            background: var(--bg-dark);
+            padding: 30px;
+            border-radius: 10px;
+            width: 220px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: #22252a;
+        }
+
+        .contact-item i {
+            font-size: 2.3rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        /* ===== FADE ANIMATION ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            nav a {
+                margin-left: 15px;
+            }
+
+            .hero-name {
+                font-size: 2.2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Prakhar Pathak</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home" class="fade-in">
+        <div class="profile-pic-container">
+            <img src="https://uploads.onecompiler.io/43uf8wvtw/43ykp4mj6/DSC_3074.jpeg" alt="Prakhar Pathak"
+                class="profile-pic">
+        </div>
+        <h1 class="hero-name">Prakhar Pathak</h1>
+        <p class="hero-title">Aspiring AI & ML Engineer</p>
+        <p class="hero-subtitle">
+            First Year Student at Scaler School of Technology — exploring the intersection of Artificial Intelligence,
+            Computer Vision, and Competitive Programming.
+        </p>
+    </section>
+
+    <section id="about" class="fade-in">
+        <h2 class="section-title">About Me</h2>
+        <div class="divider"></div>
+
+        <div class="about-content">
+            <div class="about-text">
+                <p>I’m an AI & ML enthusiast and a first-year student at Scaler School of Technology, passionate about
+                    how intelligent systems perceive and learn from the world.</p>
+                <p>I love building innovative projects that merge logic and creativity — from gesture-based interactions
+                    to neural image classifiers.</p>
+                <p>Outside of coding, I immerse myself in books, sports, and strategy — keeping my curiosity alive and
+                    my mind sharp.</p>
+
+                <h3>Aspirations</h3>
+                <p>My goal is to become one of the leading competitive programmers of India, while advancing my
+                    expertise in AI and Computer Vision — blending problem-solving precision with scientific creativity.
+                </p>
+            </div>
+
+            <div class="interests">
+                <h3>Hobbies & Interests</h3>
+
+                <div class="interest-card">
+                    <i class="fas fa-book"></i>
+                    <div>
+                        <h4>Reading Books</h4>
+                        <p>Exploring worlds, wisdom, and perspectives that expand the mind beyond code.</p>
+                    </div>
+                </div>
+
+                <div class="interest-card">
+                    <i class="fas fa-brain"></i>
+                    <div>
+                        <h4>AI & Machine Learning</h4>
+                        <p>Fascinated by the art of making machines think, learn, and reason intelligently.</p>
+                    </div>
+                </div>
+
+                <div class="interest-card">
+                    <i class="fas fa-chess"></i>
+                    <div>
+                        <h4>Chess</h4>
+                        <p>Developing patience and foresight through the elegance of strategy.</p>
+                    </div>
+                </div>
+
+                <div class="interest-card">
+                    <i class="fas fa-basketball-ball"></i>
+                    <div>
+                        <h4>Basketball</h4>
+                        <p>Fueling energy, focus, and teamwork — staying competitive on and off the court.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="fade-in">
+        <h2 class="section-title">Projects</h2>
+        <div class="divider"></div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="hand-gesture-game.jpg" class="project-img" alt="Hand Gesture Gaming">
+                <div class="project-content">
+                    <h3>Hand Gesture Gaming Project</h3>
+                    <p>Built an OpenCV-powered system that detects hand gestures in real-time to control gameplay using
+                        MediaPipe and Python.</p>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">OpenCV</span>
+                    <span class="tech-tag">MediaPipe</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="image-classifier.jpg" class="project-img" alt="Image Classifier">
+                <div class="project-content">
+                    <h3>Image Classifier with TensorFlow</h3>
+                    <p>A deep learning model capable of categorizing images across multiple classes using CNNs built in
+                        TensorFlow.</p>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">Deep Learning</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="fade-in">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="divider"></div>
+        <p class="contact-intro">Always open to collaborations, discussions, or coding challenges. Let’s connect and
+            create something impactful together!</p>
+
+        <div class="contact-grid">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <h4>Phone</h4>
+                <p>+91 9950716769</p>
+            </div>
+
+            <a href="mailto:prakharpathak@gmail.com" class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <h4>Email</h4>
+                <p>Connect via email</p>
+            </a>
+
+            <a href="https://codeforces.com/profile/prakhar.pathak18" target="_blank" class="contact-item">
+                <i class="fas fa-code"></i>
+                <h4>Codeforces</h4>
+                <p>Follow my CP journey</p>
+            </a>
+
+            <a href="https://github.com/prakharpathak18" target="_blank" class="contact-item">
+                <i class="fab fa-github"></i>
+                <h4>GitHub</h4>
+                <p>Explore my projects</p>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Scroll fade-in animation
+        const fadeElems = document.querySelectorAll(".fade-in");
+        const onScroll = () => {
+            fadeElems.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) el.classList.add("visible");
+            });
+        };
+        window.addEventListener("scroll", onScroll);
+        onScroll();
+    </script>
+</body>
+
+</html>
